@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>My HTML File</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<input type="text" ng-model="query"/>
+<select ng-model="order">
+<option value="username">nom</option>
+<option value="content">contenu</option>
+</select>
+<div ng-init="comments= [
+{username : 'Amine',
+content : 'sousse'
+},
+{username : 'yahya',
+content : 'a'
+}
+]">
+<div ng-repeat="user in comments | filter :{username:query} | orderBy:order">
+<p>
+<strong>{{user.username}}</strong><br>{{user.content}}</p>
+</div>
+</div>
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script src="index.js"></script>
+</html>
