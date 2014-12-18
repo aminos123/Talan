@@ -9,20 +9,20 @@
 <body>
 <input type="text" ng-model="query"/>
 <select ng-model="order">
-<option value="username">nom</option>
-<option value="content">contenu</option>
+<option value="-username">nom</option>
+<option value="+content">contenu</option>
 </select>
 <div ng-init="comments= [
 {username : 'Amine',
-content : 'sousse'
+content : 'aj'
 },
 {username : 'yahya',
-content : 'a'
+content : 'b'
 }
 ]">
 <div ng-repeat="user in comments | filter :{username:query} | orderBy:order">
 <p>
-<strong>{{user.username}}</strong><br>{{user.content}}</p>
+<strong>{{user.username | lowercase}}</strong><br>{{user.content | uppercase}} </p>
 </div>
 </div>
 </body>
