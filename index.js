@@ -1,13 +1,11 @@
-index.js
 function monSuperController($scope) {
-$scope.users = [
-{
-"firstName" : "Amine",
-"city" : "sousse"
+	console.log($scope);
+$scope.comments= [
+{username : 'Amine',
+content : 'aj'
 },
-{
-"firstName" : "sahbi",
-"city" : "tunis"
+{username : 'yahya',
+content : 'b'
 }
 ];
 }

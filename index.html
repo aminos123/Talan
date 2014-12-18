@@ -1,10 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="Monapp">
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <input type="text" ng-model="query"/>
@@ -12,20 +10,28 @@
 <option value="-username">nom</option>
 <option value="+content">contenu</option>
 </select>
-<div ng-init="comments= [
+<div ng-controller="monSuperController" >
+<div ng-repeat="user in comments | filter :{username:query} | orderBy:order">
+<p>
+<strong>{{user.username | lowercase}}</strong><br>{{user.content | uppercase}} </p>
+</div>
+<div ui-date="dateOptions" name="DateOfBirth"></div>
+</div>
+
+</body>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.2.14/angular-animate.min.js"></script>
+  <script>
+var app = angular.module('Monapp', ['ngAnimate'])
+app.controller('monSuperController', function ($scope){
+	$scope.comments= [
 {username : 'Amine',
 content : 'aj'
 },
 {username : 'yahya',
 content : 'b'
 }
-]">
-<div ng-repeat="user in comments | filter :{username:query} | orderBy:order">
-<p>
-<strong>{{user.username | lowercase}}</strong><br>{{user.content | uppercase}} </p>
-</div>
-</div>
-</body>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-  <script src="index.js"></script>
+];
+});
+  </script>
 </html>
